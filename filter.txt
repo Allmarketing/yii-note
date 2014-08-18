@@ -1,0 +1,1 @@
+filter是CController裡以filter開頭的方法，內建的filter有filterAccessControl、filterAjaxOnly以及filterPostOnly。

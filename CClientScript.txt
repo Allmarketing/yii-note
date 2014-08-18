@@ -1,0 +1,21 @@
+CClientScript::registerCss($id,$content);
+CClientScript::registerCssFile($url,$media);
+CClientScript::registerScript($id,$content,$pos,$htmlOptions);
+CClientScript::registerScriptFile($url,$pos,$htmlOptions);
+這四個方法是用來指定css和javascrpts，有file就是引入外部檔案，沒有file就是內部宣告。
+
+在輸出view的時候(CController::render()裡的CController::processOutput())會自動呼叫CClientScript::render來安排預先設定的css和javascript
+css的部份全部都放在<head></head>
+javascript則有五個地方可以選，分別是
+CClientScript::POS_HEAD : the script is inserted in the head section right before the title element.
+CClientScript::POS_BEGIN : the script is inserted at the beginning of the body section.
+CClientScript::POS_END : the script is inserted at the end of the body section.
+CClientScript::POS_LOAD : the script is inserted in the window.onload() function.
+CClientScript::POS_READY : the script is inserted in the jQuery's ready function.
+但因為內部和外部檔案性質不同，像是引入外部檔案並不會寫在window.onload和jQuery的ready function裡面，所以當以POS_LOAD和POS_READY呼叫registerScriptFile會完全沒有作用。
+另外，當呼叫registerScript並有指定$htmlOptions時，系統就會出現錯誤。因為內部宣告的javascript並不帶有額外的html屬性。
+所有的內部宣告語法第一個參數都是$id，主要目的應該是為了要控制輸出的順序。
+
+其他還有像是meta和link標籤的定義。
+
+registerPackages是用來帶入yii自帶的js套件。預先定義在yii函式庫路徑下的web/js/packages.php，各套件之間的關連性也有指定，所以當指定的某個套件是依存於某個某件時，也會自動載入。

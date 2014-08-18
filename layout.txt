@@ -1,0 +1,8 @@
+如果不要使用layout，要將controller::$layout設為false。
+如果只是將controller::$layout設為空值，yii還是會自動取得CWebApplication::$layout(值為main)，實際會取得protected/views/layouts/main.php當作layout。
+
+yii預設會產生三個layout檔案，一個是column1.php，一個是columne2.php，一個是main.php。
+如果是使用column1.php或columne2.php，最終還是會包在main.php裡面。
+因為在column1.php和column2.php裡都呼叫了CBaseController::beginContent和CBaseController::endContent。其實CBaseController::beginContent()會帶入//layouts/main。實際上就是將CBaseController::beginContent和CBaseController::endContent之間的html轉換成$content將丟給main.php                     
+
+使用CController::getViewFile()取得view檔案時，指定的viewfile若為/開頭，代表會從viewpath裡面尋找檔案，其中//代表根目錄，而/若在沒有module的情況下，同根目錄，若在module情形下則代表module view path                         

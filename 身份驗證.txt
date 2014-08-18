@@ -1,0 +1,3 @@
+透過繼承CUserIdentity類別，改寫authenticate方法
+進行實際驗證使用者帳密的動作。
+驗證成功後，再將CUserIdentity的實體物件丟過Yii::app()->user->login()當參數。                                                                      

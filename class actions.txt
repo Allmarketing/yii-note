@@ -1,0 +1,3 @@
+controller的action可定義為類別action，繼承自CAction，並在類別內定義run方法。此run方法也和一般Controller的方法一樣可定義帶入的參數。
+定義完類別Action之後，在要使用的Controller裡定義actions方法傳回預先設定的陣列，陣列索引是action名稱，其值是對應的類別action。
+類別action的方法雖然沒有規定要放在什麼地方，不過按慣例來講，因為是屬於controller的附屬類別，所以放在protected/controllers裡是比較直覺的，另外，因為protected/controllers裡放的主要是controller類別，所以最好再多一層以controller id命名的資料夾後，再放入類別action。這樣分類會比較清楚一點。  

@@ -1,0 +1,8 @@
+設定urlManage參數rules
+'<lang:(zh_tw)>/<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+'<lang:(zh_tw)>'=>'site/index',
+
+第一項是設定uri開頭為zh_tw時會帶lang變數值為zh_tw
+第二項是設定uri僅為zh_tw時，其對應的controller/action為site/index，也就是預設的controller/action
+
+其中lang變數需於controller裡用來設定language之用，若在controller裡沒有正確設定，就不會啟用i18n的機制。

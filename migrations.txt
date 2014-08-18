@@ -1,0 +1,24 @@
+migrations是透過yiic指令自動建立以日期為名稱的類別架構，之後由人工在類別裡的up方法裡實作操作db的指令。
+此系列類別是提供給其他共同開發者，或者轉換不同開發環境時所使用。最佳的應用是與版本控制系統一起使用。
+
+指令範例
+
+#建立migration
+yiic migrate create <name>
+
+#套用migration
+yiic migrate
+
+yiic migrate up 3
+
+yiic migrate to 101129_185401
+
+#反向套用migration
+yiic migrate down [step]
+
+#重新套用migration
+yiic migrate redo [step]
+
+#檢視migration訊息
+yiic migrate history [limit]
+yiic migrate new [limit]

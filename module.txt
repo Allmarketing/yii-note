@@ -1,0 +1,2 @@
+一般網址路徑是controller/acton ，前面應該可以再加上一個module，變成module/controller/acton。
+在main.php裡的$modules裡設定module時，如果要指定class就要指定完整的aliasPath，如果是要使用application裡的 modules，只要以module名稱當作陣列索引，並且指定其值為不包含「class」為索引的陣列即可。如果給的陣列不是空陣列，其陣列索引必需要該module類別的成員變數。

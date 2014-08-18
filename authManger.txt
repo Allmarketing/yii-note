@@ -1,0 +1,8 @@
+authManger是用來做身份驗證及權限控制之用。
+首先要先瞭解authorization item，Yii定義有三種auth item，一個是operation，一個是task，一個role。以層級來說，role是最高級，operation則是最底層。role可以擁有各種task，而task可以擁有多種operaton，此外，role也可以擁有其他role，task也可以擁有其他task，operation應也是，只是operation通常代表最簡單的動作，所以似乎也沒必要再包括其他operation。
+以會員管理為例進一步說明，operation就是指新增會員，修改會員，刪除會員這些逐一項目，會員管理則是task，管理員則是role。會員管理(task)就包括上述的operation，可以進行這task就是具有這個權限的role(管理者)。
+用來識別auth item的就是名稱，然後有一個描述欄位，名稱的部份最好能夠不重複為佳。
+Yii內建有兩種authManger元件類別，一個是CPhpAuthManager，一個是CDbAuthManager，前者是用php來儲存auth item，應該是一組陣列。後者則是用資料庫來儲存。
+CDbAuthManager相關的資料表結構在/framework/web/auth/schema-*.sql
+
+因為CDbAuthManager第一次執行需寫到資料庫，所以在設計功能的時候就要考慮到auth的關係，並隨時建立組合auth的動作。各種功能建立auth的語法應統一集中到一個資料夾，然後由後台負責管理權限的功能統一呼叫，因為可能要做成可以修改的狀態，所以需要判斷是不是已經存在，不存在的才做新增，而不是每次執行都新增。

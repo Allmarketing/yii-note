@@ -1,0 +1,11 @@
+談到Yii的i18n，就要先提到language的設定，Yii的Language設定是遵循{語言}_{地區}這種格式來指定，像美國英文就是en_us，中文則是zh_tw。預設狀況下，Yii的預設語言是en_us，這個屬性被設在application::$sourceLanguage。另有一個變數是applicaton::$language，這個屬性可被applcation::setLanguage來設定，也可以在application的初始設定(protected/config/main.php)裡指定language項目。注意，只有當這兩者設定不一樣時，翻譯的機制才會啟動。
+翻譯的種類分成兩種，一種是程式內訊息的翻譯，一種就是整個view的翻譯(替換)。
+程式內訊息的翻譯是透過呼叫Yii:t()來執行。Yii:t()總共有$category,$message,$params=array(),$source=null,$language=null等五個參數。$category是代表該語言翻譯的檔名，指向在protected/messages/{languageId}/{category}.php，而{category}.php裡面則是傳回一個陣列。陣列的索引則是以$message為索引，對應的值則是該{languageId}所代表的翻譯內容。$params則是替換$message裡嵌入的placeholder的內容。至於$source則是指該訊息的類別，留空是指messages，另可指定coreMessages，若$source為null且$category設為yii或zii時，$source也會自動變成定coreMessages。
+$source的差別就是尋找翻譯檔的路徑。$language則是指要翻譯成的語言，留空則使用application::$language的設定。
+view的翻譯(替換)則是在protected/views/{controlerId}/{languageId}/{viewfile}.php有對應的檔案。
+以原始Yii的設定，en_us是預設的語言，上述Yii:t參數之一的$message則是代表預設的內容，而view檔案的路徑刪除{languageId}就是en_us的view檔案。雖然application::$sourceLanguage可以修改，但考慮便利性跟實用性，還是以預設設定來執行會比較好。
+
+其他還有像是日期及數字格式的翻譯。
+
+參考來源:
+http://www.yiiframework.com/doc/guide/1.1/en/topics.i18n
