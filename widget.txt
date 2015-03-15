@@ -1,0 +1,13 @@
+Widget是一個小工具，主要用來做輸出呈現的。
+建立自己的Widget要繼承CWidget類別，以及重寫init及run方法。
+使用widget的方法是在view裡呼叫$this->widget(widgetClass,widtgetOptionArray);
+widgetClass是要使用的widget類別名稱
+widtgetOptionArray則是要帶給widget的參數，需為陣列。陣列的索引值也需在widget類別裡明確宣告為成員變數，否則初始化widget時會出現錯誤。
+
+run方法是實際產生輸出內容的地方，一般情況就是在這裡呼叫echo。
+
+widget也有自己的view，view檔的預設路徑就是在widget類別所屬資料夾下的views裡。
+也因為如此，需考慮這個widget所產生的結果是不是可能經常變動，如果可能經常變動，最好避免使用widget的view，因為的配合的網頁設計師而言可能會很困擾。
+                                                                
+
+*實際初始化widget是透過CWidgetFactory::createWidget()。
