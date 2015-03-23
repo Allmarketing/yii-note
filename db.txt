@@ -1,0 +1,6 @@
+使用ActiveRecord類別可以避免省去複雜的sql
+但如果在使用ActiveRecord情況下又想看到查詢的sql，
+可以開啟設定檔裡的CWebLogRoute
+log就會顯示在每個頁面下方。
+同時也可以將 CDbConnection::enableParamLogging設為true，
+這樣一來連同bound到sql裡的參數值也可以log下來。 
