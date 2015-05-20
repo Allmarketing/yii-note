@@ -1,0 +1,5 @@
+controller::redirect($url,$terminate=true,$statusCode=302)
+
+$url可為字串為陣列，字串就會直接當作url使用。
+如果是陣列，第一個元素必須為0索引，指向controller action的route
+若有帶參數，則以關聯式元素指定，索引值為參數名稱，其值則為參數值。
