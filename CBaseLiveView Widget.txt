@@ -1,0 +1,10 @@
+CBaseListView widget是用來呈現資料列表
+初始化時$dataProvider參數為其資料來源，需投入實作IDataProvider介面的類別物件
+
+一樣作法就是建立 CActiveDataProvider 類別的物件。
+
+請見: http://www.yiiframework.com/doc/api/1.1/CActiveDataProvider
+
+
+
+ 
