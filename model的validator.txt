@@ -1,0 +1,19 @@
+有三種方式:
+一個是model的方法
+介面為 validatorMethod($attribute,$params)
+
+一個是validator類別，需繼承CValidator.
+一個是validator類別別名
+
+特別的validator: safe及unsafe
+設為unsafe的屬性，需要用個別指定方法指給model，例如:
+$model->permission='admin';
+$model->id=1;
+
+觸發驗證
+當使用者輸入資料都指給model之後，可以利用執行下列方法觸發間證。
+$model->validate()
+
+取得驗證錯誤訊息
+$model->getErrors()及$model->getError()。
+兩者差別是，前者回傳所有的錯誤，後者僅回傳第一個錯誤
