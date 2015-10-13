@@ -1,0 +1,20 @@
+$command = Yii::app()->db->createCommand(SQLstatement);
+$command->execute();  //無結果，回傳影響列數
+或
+$reader = $command->query();  //有結果
+foreach($reader as $row) ...
+
+
+交易模式
+$transaction=$connection->beginTransaction();
+try
+{
+   $connection->createCommand($sql1)->execute();
+   $connection->createCommand($sql2)->execute();
+   //.... other SQL executions
+   $transaction->commit();
+}
+catch(Exception $e)
+{
+   $transaction->rollback();
+}
